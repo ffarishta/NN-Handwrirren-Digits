@@ -4,15 +4,10 @@ import argparse
 
 def softmax(x):
     """
-    Compute softmax function for a batch of input values. 
+    Computes softmax function for a batch of input values. 
     The first dimension of the input corresponds to the batch size. The second dimension
     corresponds to every class in the output. When implementing softmax, you should be careful
     to only sum over the second dimension.
-
-    Important Note: You must be careful to avoid overflow for this function. Functions
-    like softmax have a tendency to overflow when very large numbers like e^10000 are computed.
-    You will know that your function is overflow resistent when it can handle input like:
-    np.array([[10000, 10010, 10]]) without issues.
 
     Args:
         x: A 2d numpy float array of shape batch_size x number_of_classes
@@ -27,7 +22,7 @@ def softmax(x):
 
 def sigmoid(x):
     """
-    Compute the sigmoid function for the input here.
+    Computes the sigmoid function for the input here.
 
     Args:
         x: A numpy float array
@@ -57,16 +52,6 @@ def get_initial_params(input_size, num_hidden, num_output):
 
     This function should return a dictionary mapping parameter names to numpy arrays containing
     the initial values for those parameters.
-
-    There should be four parameters for this model:
-    W1 is the weight matrix for the hidden layer of size input_size x num_hidden
-    b1 is the bias vector for the hidden layer of size num_hidden
-    W2 is the weight matrix for the output layers of size num_hidden x num_output
-    b2 is the bias vector for the output layer of size num_output
-
-    As specified in the PDF, weight matrices should be initialized with a random normal distribution
-    centered on zero and with scale 1.
-    Bias vectors should be initialized with zero.
     
     Args:
         input_size: The size of the input data
@@ -126,7 +111,7 @@ def forward_prop(data, labels, params):
 
 def backward_prop(data, labels, params, forward_prop_func):
     """
-    Implement the backward propegation gradient computation step for a neural network
+    Implements the backward propegation gradient computation step for a neural network
     
     Args:
         data: A numpy array containing the input
@@ -216,7 +201,7 @@ def backward_prop_regularized(data, labels, params, forward_prop_func, reg):
 
 def gradient_descent_epoch(train_data, train_labels, learning_rate, batch_size, params, forward_prop_func, backward_prop_func):
     """
-    Perform one epoch of gradient descent on the given training data using the provided learning rate.
+    Performs one epoch of gradient descent on the given training data using the provided learning rate.
 
     This code should update the parameters stored in params.
     It should not return anything

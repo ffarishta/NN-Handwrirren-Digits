@@ -12,10 +12,10 @@ def softmax(x):
     Returns:
         A 2d numpy float array containing the softmax results of shape batch_size x number_of_classes
     """
-    # *** START CODE HERE ***
+    
     n = np.max(x, axis=1, keepdims=True)
     return np.exp(x - n)/np.sum(np.exp(x - n), axis = 1, keepdims = True )
-    #  *** END CODE HERE ***
+    
 
 def sigmoid(x):
     """
@@ -27,7 +27,7 @@ def sigmoid(x):
     Returns:
         A numpy float array containing the sigmoid results
     """
-    # *** START CODE HERE ***
+    
     #apply different operation to positive and negative values prevent overflow 
     n,m = x.shape
     z = np.zeros(shape=(n,m), dtype=float)
@@ -41,7 +41,7 @@ def sigmoid(x):
     numerator[x < 0] = z[x < 0]
     
     return numerator/denominator
-    # *** END CODE HERE ***
+    
 
 def get_initial_params(input_size, num_hidden, num_output):
     """
@@ -59,7 +59,6 @@ def get_initial_params(input_size, num_hidden, num_output):
         A dict mapping parameter names to numpy arrays
     """
 
-    # *** START CODE HERE ***
     d = {}
     
     d["W1"] = np.random.normal(0,1,size= (input_size,num_hidden))
@@ -68,7 +67,7 @@ def get_initial_params(input_size, num_hidden, num_output):
     d["b2"] = np.zeros(shape = (num_output))
 
     return d
-    # *** END CODE HERE ***
+
 
 def forward_prop(data, labels, params):
     """
@@ -88,7 +87,7 @@ def forward_prop(data, labels, params):
             2. A numpy array The output (after the softmax) of the output layer
             3. The average loss for these data elements
     """
-    # *** START CODE HERE ***
+ 
     W1 = params['W1'] 
     b1 = params['b1'] 
     W2 = params['W2'] 
@@ -104,7 +103,7 @@ def forward_prop(data, labels, params):
     n = len(labels)
     loss = -(1/n) * np.sum(np.sum(labels*np.log(a2),axis = 1),axis = 0)
     return a1, a2, loss
-    # *** END CODE HERE ***
+
 
 def backward_prop(data, labels, params, forward_prop_func):
     """
@@ -126,7 +125,7 @@ def backward_prop(data, labels, params, forward_prop_func):
         In particular, it should have 4 elements:
             W1, W2, b1, and b2
     """
-    # *** START CODE HERE ***
+ 
     W1 = params['W1']
     b1 = params['b1']
     W2 = params['W2']
@@ -146,7 +145,7 @@ def backward_prop(data, labels, params, forward_prop_func):
     db1 = (np.sum(d2,axis=0,keepdims=True))[0]
  
     return {"W1":dW1,"b1":db1,"W2":dW2,"b2":db2}
-    # *** END CODE HERE ***
+
 
 
 def backward_prop_regularized(data, labels, params, forward_prop_func, reg):
@@ -170,7 +169,7 @@ def backward_prop_regularized(data, labels, params, forward_prop_func, reg):
         In particular, it should have 4 elements:
             W1, W2, b1, and b2
     """
-    # *** START CODE HERE ***
+
     W1 = params['W1']
     b1 = params['b1']
     W2 = params['W2']
@@ -194,7 +193,7 @@ def backward_prop_regularized(data, labels, params, forward_prop_func, reg):
     dW1 += (reg * W1 * 2)
 
     return {"W1":dW1,"b1":db1,"W2":dW2,"b2":db2}
-    # *** END CODE HERE ***
+ 
 
 def gradient_descent_epoch(train_data, train_labels, learning_rate, batch_size, params, forward_prop_func, backward_prop_func):
     """
@@ -215,7 +214,7 @@ def gradient_descent_epoch(train_data, train_labels, learning_rate, batch_size, 
     Returns: This function returns nothing.
     """
 
-    # *** START CODE HERE ***
+ 
     #find the total number of batches
     batches = int(len(train_labels)/batch_size)
     
@@ -234,7 +233,6 @@ def gradient_descent_epoch(train_data, train_labels, learning_rate, batch_size, 
       params['b2'] -= learning_rate * (grad['b2']/batch_size)
     # *** END CODE HERE ***
 
-    # This function does not return anything
     return
 
 def nn_train(

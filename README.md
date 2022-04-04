@@ -13,5 +13,7 @@ The following shows some example images from the MNIST dataset:
 
 ![image](https://user-images.githubusercontent.com/62407982/161600686-a5ab4dcb-8f08-4145-9f10-7f8378ad19df.png)
 
+For the plots of the unregularized model, both the cost and accuracy of the dev values start to deviate from the training values after roughly 10 epochs. This is an indication that the model is overfitting because of high variance. After adding the regularization term both lines seem to run closer together. 
+
 
 

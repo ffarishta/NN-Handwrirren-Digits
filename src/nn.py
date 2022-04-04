@@ -5,9 +5,6 @@ import argparse
 def softmax(x):
     """
     Computes softmax function for a batch of input values. 
-    The first dimension of the input corresponds to the batch size. The second dimension
-    corresponds to every class in the output. When implementing softmax, you should be careful
-    to only sum over the second dimension.
 
     Args:
         x: A 2d numpy float array of shape batch_size x number_of_classes
